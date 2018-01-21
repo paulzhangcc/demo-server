@@ -1,0 +1,45 @@
+{
+
+  "properties": [
+    {
+      "name": "custom.sharing.open-thirdparty-service",
+      "type": "java.lang.Boolean",
+      "description": "Whether to open the actual thirdparty channel",
+      "sourceType": "com.paulzhangcc.sharing.SharingProperties",
+      "defaultValue": "true"
+    },
+    {
+      "name": "custom.sharing.file-system-root",
+      "type": "java.lang.String",
+      "description": "Shared file system directory,Please configure the system to allow programs to access the directory",
+      "sourceType": "com.paulzhangcc.sharing.SharingProperties",
+      "defaultValue": "/nfs"
+    }
+  ,
+    {
+      "name": "custom.sharing.static-cms-access-path-prefix",
+      "type": "java.lang.String",
+      "description": "Shared file system directory,Please configure the system to allow programs to access the directory",
+      "sourceType": "com.paulzhangcc.sharing.SharingProperties",
+      "defaultValue": "/static"
+    }
+  ,
+    {
+      "name": "custom.sharing.static-server-link",
+      "type": "java.lang.String",
+      "description": "协议://域名 http://www.paulzhangcc.top",
+      "sourceType": "com.paulzhangcc.sharing.SharingProperties",
+      "defaultValue": "http://www.paulzhangcc.top"
+    },
+    {
+      "name": "sms.aliyun.message-signature",
+      "type": "java.lang.String",
+      "description": "Message signatures",
+      "sourceType": "com.paulzhangcc.demo.manager.AliYunSmsProperties",
+      "defaultValue": ""
+    }
+
+
+  ]
+}
+

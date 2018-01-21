@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean" depends-on="applicationContextHelper">
+		<property name="triggers">
+			<list>
+				<ref bean="demoCronTrigger"/>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 理财师佣金跑批 start -->
+	<bean id="demoJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!--com.paulzhangcc.sharing.Quartz-->
+		<property name="targetObject" ref="quartz" />
+		<property name="targetMethod" value="demo" />
+	</bean>
+	<bean id="demoCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="demoJobDetail" />
+		<property name="cronExpression" value=" 0/10 * * * * ?" />
+	</bean>
+	<!-- 理财师佣金跑批 end -->
+
+</beans> 
