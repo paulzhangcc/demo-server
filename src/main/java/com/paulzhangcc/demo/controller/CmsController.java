@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 
@@ -40,4 +42,18 @@ public class CmsController {
             httpServletResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
     }
+
+    @RequestMapping("/user/logo/upload/{userId}")
+    public String uploadUserId(HttpServletRequest request,@PathVariable("userId") Integer userId) throws Exception{
+        ServletInputStream inputStream = request.getInputStream();
+
+        String storageLocationPrefix = CmsConsts.CmsEnum.avatar.getStorageLocationPrefix();
+        String accessLocationPrefix = CmsConsts.CmsEnum.avatar.getAccessLocationPrefix();
+
+        FileUtils.forceMkdir(new File(storageLocationPrefix));
+        String logoFileName = storageLocationPrefix + userId + ".jpg";
+        FileUtils.copyInputStreamToFile(inputStream,new File(logoFileName));
+        return  accessLocationPrefix + userId + ".jpg";
+    }
+
 }
